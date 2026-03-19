@@ -38,13 +38,14 @@ description: Real-world reviews of audio, video, and lighting equipment for smal
     </div>
 </section>
 
-<!-- Featured Articles (Dynamic from CMS) -->
+<!-- Featured Articles -->
 <section id="featured" class="featured-section">
     <div class="container">
         <h2 class="section-title">Latest Reviews & Guides</h2>
         
         <div class="articles-grid">
-            {% for article in collections.articles | reverse | limit(3) %}
+            {% for article in collections.articles %}
+            {% if loop.index <= 3 %}
             <article class="article-card {% if loop.first %}featured{% endif %}">
                 <div class="article-image">
                     {% if article.data.image %}
@@ -57,16 +58,17 @@ description: Real-world reviews of audio, video, and lighting equipment for smal
                 <div class="article-content">
                     <div class="article-meta">
                         <span class="category">{{ article.data.category }}</span>
-                        <span class="read-time">{{ article.templateContent | wordcount | divide(200) | round }} min read</span>
+                        <span class="read-time">5 min read</span>
                     </div>
                     <h3><a href="{{ article.url }}">{{ article.data.title }}</a></h3>
-                    <p>{{ article.templateContent | striptags | excerpt }}</p>
+                    <p>{{ article.data.description }}</p>
                     <div class="article-footer">
                         <a href="{{ article.url }}" class="read-more">Read Full Review →</a>
                         <span class="updated">{{ article.data.date | dateDisplay }}</span>
                     </div>
                 </div>
             </article>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
@@ -81,25 +83,21 @@ description: Real-world reviews of audio, video, and lighting equipment for smal
                 <div class="category-icon" aria-hidden="true">🎤</div>
                 <h3>Audio Equipment</h3>
                 <p>Mics, mixers, speakers, and processors</p>
-                <span class="category-count">{{ collections.articles | filter('category', 'Audio Equipment') | length }} reviews</span>
             </a>
             <a href="#video" class="category-card">
                 <div class="category-icon" aria-hidden="true">🎥</div>
                 <h3>Video & Streaming</h3>
                 <p>Cameras, encoders, and switchers</p>
-                <span class="category-count">{{ collections.articles | filter('category', 'Video Equipment') | length }} reviews</span>
             </a>
             <a href="#lighting" class="category-card">
                 <div class="category-icon" aria-hidden="true">💡</div>
                 <h3>Lighting Systems</h3>
                 <p>LED fixtures, controllers, and design</p>
-                <span class="category-count">{{ collections.articles | filter('category', 'Lighting') | length }} reviews</span>
             </a>
             <a href="#software" class="category-card">
                 <div class="category-icon" aria-hidden="true">💻</div>
                 <h3>Software & Apps</h3>
                 <p>Presentation, planning, and management</p>
-                <span class="category-count">{{ collections.articles | filter('category', 'Software') | length }} reviews</span>
             </a>
         </div>
     </div>

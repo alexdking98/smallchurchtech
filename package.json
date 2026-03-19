@@ -11,8 +11,5 @@
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1"
-  },
-  "dependencies": {
-    "markdown-it": "^13.0.1"
   }
 }
