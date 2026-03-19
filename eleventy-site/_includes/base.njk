@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>{{ title or "Small Church Tech | Honest Gear Reviews for Church Tech Directors" }}</title>
+    <meta name="title" content="{{ title or 'Small Church Tech | Honest Gear Reviews for Church Tech Directors' }}">
+    <meta name="description" content="{{ description or 'Real-world reviews of audio, video, and lighting equipment for small churches. Budget-conscious recommendations from a working tech director.' }}">
+    <meta name="keywords" content="church tech, small church audio, church sound system, church video equipment, worship tech">
+    <meta name="author" content="Alex Daniels">
+    <link rel="canonical" href="https://smallchurchtech.com{{ page.url }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://smallchurchtech.com{{ page.url }}">
+    <meta property="og:title" content="{{ title or 'Small Church Tech' }}">
+    <meta property="og:description" content="{{ description or 'Honest gear reviews for church tech directors' }}">
+    <meta property="og:image" content="https://smallchurchtech.com/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://smallchurchtech.com{{ page.url }}">
+    <meta property="twitter:title" content="{{ title or 'Small Church Tech' }}">
+    <meta property="twitter:description" content="{{ description or 'Honest gear reviews for church tech directors' }}">
+    <meta property="twitter:image" content="https://smallchurchtech.com/images/og-image.jpg">
+    
+    <!-- Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    {% if page.url.includes('/articles/') %}
+    <link rel="stylesheet" href="/css/article.css">
+    {% endif %}
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-31RL6HRYXV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-31RL6HRYXV');
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo" aria-label="Small Church Tech Homepage">
+                    <span class="logo-icon" aria-hidden="true">⚡</span>
+                    <span class="logo-text">Small Church Tech</span>
+                </a>
+                <nav class="main-nav" aria-label="Main navigation">
+                    <a href="/#audio">Audio</a>
+                    <a href="/#video">Video</a>
+                    <a href="/#lighting">Lighting</a>
+                    <a href="/#guides">Guides</a>
+                    <a href="/#about">About</a>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    {{ content | safe }}
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Small Church Tech</h4>
+                    <p>Honest, tested gear reviews for worship tech directors who care about quality and budget.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="/#audio">Audio Equipment</a></li>
+                        <li><a href="/#video">Video & Streaming</a></li>
+                        <li><a href="/#lighting">Lighting</a></li>
+                        <li><a href="/#software">Software</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#guides">Buying Guides</a></li>
+                        <li><a href="/#about">About</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#disclosure">Affiliate Disclosure</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Small Church Tech. All rights reserved.</p>
+                <p class="disclosure-text">As an Amazon Associate and affiliate partner, we earn from qualifying purchases.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+</body>
+</html>

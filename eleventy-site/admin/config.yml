@@ -1,0 +1,62 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Uncomment to enable editorial workflow (drafts)
+# publish_mode: editorial_workflow
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  # Articles Collection
+  - name: "articles"
+    label: "Articles"
+    folder: "articles"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Meta Description", name: "description", widget: "text", required: false}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Author", name: "author", widget: "string", default: "Alex Daniels"}
+      - {label: "Category", name: "category", widget: "select", options: ["Audio Equipment", "Video Equipment", "Lighting", "Software"]}
+      - {label: "Featured Image", name: "image", widget: "image", required: false}
+      - {label: "Featured Image Alt Text", name: "imageAlt", widget: "string", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - label: "Products Reviewed"
+        name: "products"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "Product Name", name: "name", widget: "string"}
+          - {label: "Price", name: "price", widget: "string"}
+          - {label: "Rating (out of 10)", name: "rating", widget: "number", min: 1, max: 10}
+          - {label: "Amazon Link", name: "amazonLink", widget: "string", required: false}
+          - {label: "Sweetwater Link", name: "sweetwaterLink", widget: "string", required: false}
+          - {label: "B&H Link", name: "bhLink", widget: "string", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+
+  # Homepage Settings
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Homepage"
+        name: "homepage"
+        file: "content/homepage.json"
+        fields:
+          - {label: "Hero Title", name: "heroTitle", widget: "string"}
+          - {label: "Hero Subtitle", name: "heroSubtitle", widget: "text"}
+          - {label: "Site Description", name: "siteDescription", widget: "text"}
+          
+      - label: "Site Info"
+        name: "siteInfo"
+        file: "content/site-info.json"
+        fields:
+          - {label: "Site Name", name: "siteName", widget: "string"}
+          - {label: "Author Name", name: "authorName", widget: "string"}
+          - {label: "Contact Email", name: "email", widget: "string"}
+          - {label: "Google Analytics ID", name: "gaId", widget: "string"}
+          - {label: "About Text", name: "about", widget: "text"}
