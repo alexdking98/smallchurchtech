@@ -6,6 +6,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("robots.txt");
 
+  // Add limit filter (IMPORTANT - was missing!)
+  eleventyConfig.addFilter("limit", function(arr, count) {
+    if (!Array.isArray(arr)) return arr;
+    return arr.slice(0, count);
+  });
+
   // Add date filter
   eleventyConfig.addFilter("dateDisplay", function(date) {
     return new Date(date).toLocaleDateString('en-US', { 
